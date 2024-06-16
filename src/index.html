@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="Description" content="quel realworld example">
+    <title>Conduit</title>
+    <!-- Import Ionicon icons & Google Fonts our Bootstrap theme relies on -->
+    <link
+      href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+      rel="stylesheet"
+      type="text/css"
+      title="main"
+    />
+    <link
+      href="//fonts.googleapis.com/css?family=Titillium+Web:700|Source+Serif+Pro:400,700|Merriweather+Sans:400,700|Source+Sans+Pro:400,300,600,700,300italic,400italic,600italic,700italic"
+      rel="stylesheet"
+      type="text/css"
+      title="main"
+    />
+    <!-- Import the custom Bootstrap 4 theme from our hosted CDN -->
+    <link rel="stylesheet" href="//demo.productionready.io/main.css" title="main" />
+    <script type="importmap">
+      {
+        "imports": {
+          "quel": "https://cdn.jsdelivr.net/gh/mogera551/quel@v0.13.1/dist/quel.min.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <app-main style="--adopted-css:main;"></app-main>
+
+  </body>
+  <script type="module">
+    import { registerComponentModules, registerFilters } from 'quel';
+    import * as filters from './common/filters.js';
+    import * as AppMain from './components/main.js';
+
+    registerFilters(filters);
+    registerComponentModules({AppHeader});
+
+    const main = document.querySelector('app-main');
+    main.props = { currentHash: "/", user:undefined };
+
+    window.addEventListener(
+      "hashchange",
+      function (event) {
+        event.stopPropagation();
+        main.props.currentHash = location.hash;
+      },
+      false,
+    );
+
+  </script>
+</html>
