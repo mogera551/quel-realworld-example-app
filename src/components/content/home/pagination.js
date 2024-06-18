@@ -12,9 +12,9 @@ export const html = `
 
 export class State {
   /** @type {number} number of item in a page */
-  numberInPage;
+  numberInPage = 1;
   /** @type {number} number of item */
-  count;
+  count = 0;
   /** @type {number} current active page number */
   currentPage; // 1-based
 
