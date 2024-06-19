@@ -1,5 +1,6 @@
 
 import * as articlePreview from './article-preview.js';
+import * as appPagination from './app-pagination.js';
 
 export const componentModules = {
   articlePreview
@@ -32,19 +33,15 @@ export const html = `
 
         {{ loop:articles }}
           <article-preview data-bind="
-            props.article:articles.*
+            props.article: articles.*;
           "></article-preview>
         {{ endloop: }}
 
-
-        <ul class="pagination">
-          <li class="page-item active">
-            <a class="page-link" href="">1</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="">2</a>
-          </li>
-        </ul>
+        <app-pagination data-bind="
+          props.numberInPage: articlesInPage;
+          props.count: articleCount;
+          props.currentPage: currentPage;
+        "></app-pagination>
       </div>
 
       <div class="col-md-3">
@@ -70,28 +67,17 @@ export const html = `
 </div>
 `;
 
-const NUMBER_IN_PAGE = 10;
+const ARTICLES_IN_PAGE = 10;
 
 export class State {
   authenticated = false;
   articles = [];
   tags = [];
+  // for pagination
   articleCount = 0;
-  articlesInPage = 10;
+  articlesInPage = ARTICLES_IN_PAGE;
   currentPage = 1;
 
-  get pageCount() {
-    return Math.ceil((this.articleCount - NUMBER_IN_PAGE + 1) / NUMBER_IN_PAGE);
-  }
-  get pages() {
-    return [...Array(this.pageCount)].map((_, i) => i + 1)
-  }
-  get "pages.*.offset"() {
-    return this.$1 * NUMBER_IN_PAGE;
-  }
-  get "pages.*.active"() {
-    return this.currentPage === this.$1;
-  }
   $connectedCallback() {
 
   }

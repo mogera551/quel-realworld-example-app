@@ -35,3 +35,9 @@ export class State {
     return PREFIX_HASH + `/profile/${this.article.author.username}`;
   }
 }
+
+export const filters = {
+  encode: {
+    encode: options => value => encodeURIComponent(value),
+  }
+}
