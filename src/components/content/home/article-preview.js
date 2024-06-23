@@ -1,3 +1,4 @@
+import { PREFIX_HASH } from "../../common/const.js";
 
 export const html = `
 <div class="article-preview">
@@ -23,8 +24,6 @@ export const html = `
   </a>
 </div>
 `;
-
-const PREFIX_HASH = '#';
 
 export class State {
   article;

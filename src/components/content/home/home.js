@@ -1,9 +1,10 @@
 
 import * as articlePreview from './article-preview.js';
 import * as appPagination from './app-pagination.js';
+import { ARTICLES_IN_PAGE } from "../../common/const.js"
 
 export const componentModules = {
-  articlePreview
+  articlePreview, appPagination
 }
 
 export const html = `
@@ -66,8 +67,6 @@ export const html = `
   </div>
 </div>
 `;
-
-const ARTICLES_IN_PAGE = 10;
 
 export class State {
   authenticated = false;

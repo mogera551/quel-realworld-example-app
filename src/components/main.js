@@ -1,8 +1,11 @@
 
 import * as ContentHome from './content/home/home.js';
+import * as ContentLogin from './content/login/login.js';
+import * as ContentRegister from './content/register/register.js';
+import * as ContentProfile from './content/profile/profile.js';
 
 export const componentModules = {
-  ContentHome
+  ContentHome, ContentLogin, ContentRegister, ContentProfile
 }
 
 export const html = `
@@ -61,7 +64,7 @@ export const html = `
 
 const dependentProps = {};
 const HASH_PREFIX = '#';
-const hashed = (hash) => HASH_PREFIX + hash;
+const hashed = (path) => HASH_PREFIX + path;
 
 export class State {
   user;
